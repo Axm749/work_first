@@ -281,66 +281,32 @@ function clear_table(){
     rowCount = 0;
     sort_table_by_column(Table_info);
 }
+function clear_table2(){
+    let Table_info2 = document.getElementById("search_out");
+    Table_info2.innerHTML = `
+    <thead>
+        <tr>
+            <th>login &UpArrowDownArrow;</th>
+            <th>name &UpArrowDownArrow;</th>
+            <th>role id &UpArrowDownArrow;</th>
+            <th>status &UpArrowDownArrow;</th>
 
+        </tr> 
+    </thead>
+    <tbody>
+        <tr style="display: none;">
+            <th>login</th>
+            <th>name</th>
+            <th>role id</th>
+            <th>status</th>
 
-
-const debug1 = document.getElementById("debug1");
-
-debug1.onclick = async function returnToken(){
-    BearerToken_got_from_function = "Bearer "+localStorage.BearerToken;
-    alert(BearerToken_got_from_function)
+            </tr>
+    </tbody> 
+    `;
+    sort_table_by_column(Table_info2);
 }
-
 
 let light_theme = true
-
-
-const debug2 = document.getElementById("debug2");
-
-debug2.onclick = async function(){
-    
-    let grid_page = document.getElementById("page_grid");
-    var b = document.getElementById('login_form');
-    var c = document.getElementById('auth');
-
-    var e = document.getElementById('User_Logout');
-
-    e.style.display = "block";
-    b.style.display = "none";
-    c.style.display = "block";
-
-    grid_page.style.gridTemplateAreas = `
-    "header header header header" 
-    "nav auth auth auth"
-    "sidebar main main main"
-    "sidebar output output output"
-    "footer footer footer footer"`;
-}
-
-
-const debug3 = document.getElementById("debug3");
-
-debug3.onclick = async function(){
-    
-    if (light_theme == true){
-        document.documentElement.style.setProperty('--glass_rgb', 'rgba(36, 36, 36, 0.842)');
-
-        document.documentElement.style.setProperty('--glass_border_rgb', 'rgba(129, 129, 129, 0.952)');
-        // document.documentElement.style.setProperty('color', '#000000');
-        
-        light_theme = false;
-        return 0;
-    } else {
-        document.documentElement.style.setProperty('--glass_rgb', 'rgba(252, 252, 252, 0.2)');
-
-        document.documentElement.style.setProperty('--glass_border_rgb', 'rgba(255, 255, 255, 0.3)');
-        light_theme = true;
-    }
-
-
-    
-        
-}
 
 
 
@@ -349,73 +315,14 @@ function getRandomInt(max) {
     return Math.floor(Math.random() * max);
 }
 
-const debug4 = document.getElementById("debug4");
+
 
 let count = 0
 let lenght_of_input = 2;
 let tab_len = 50;
 
-debug4.onclick = function example_fill(){
 
-    let Table_info = document.getElementById("output_table");
-    for (i=0; i<tab_len; i++){
-        Table_info.insertRow().innerHTML+=`
-        <td>${makeid(lenght_of_input)}</td>
-        <td>${makeid(lenght_of_input)}</td>
-        <td>${makeid(lenght_of_input)}</td>
-        <td>${makeid(lenght_of_input)}</td>
-        `;
-        rowCount+=1;
-    };
-    count+=1;
-    console.log(rowCount + ' rows in total');
-}
 
-function find_and_blend(color, column){
-
-    let searching = document.getElementById(`search_input${column}`).value;
-    console.log(searching)
-    var correct = 0;
-    var as = document.getElementById('output_table');
-    for(var i=2;i<as.rows.length;i++) {
-        var trs = as.getElementsByTagName("tr")[i];
-        var cellVal=trs.cells[column]
-        if (cellVal.innerHTML == searching){
-            console.log(cellVal.innerHTML + '=' + searching)
-            console.log('we found it!')
-            console.log('that was iteration:'+(i-1))
-
-            document.getElementById('output_table').getElementsByTagName("tr")[i].style.background = `${color}`;
-            correct+=1;
-        }
-        else{
-            document.getElementById('output_table').getElementsByTagName("tr")[i].style.background = 'transparent';
-        }
-    }
-
-    if(correct >=1){
-            console.log('total found:' + correct)
-            // return correct
-    }
-}
-
-input_for_search0 = document.getElementById("search_input0")
-input_for_search1 = document.getElementById("search_input1")
-input_for_search2 = document.getElementById("search_input2")
-input_for_search3 = document.getElementById("search_input3")
-
-input_for_search0.onkeyup = function(){
-        find_and_blend('#00000023', 0)
-    }
-input_for_search1.onkeyup = function(){
-        find_and_blend('#00000023', 1)
-    }
-input_for_search2.onkeyup = function(){
-        find_and_blend('#00000023', 2)
-    }
-input_for_search3.onkeyup = function(){
-        find_and_blend('#00000023', 3)
-    }
 
 
 

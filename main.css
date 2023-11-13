@@ -21,7 +21,7 @@
     --grad_second_rgb: rgb(100, 198, 255);
     
 
-/* -------------------dark theme------------------- */
+/* -------------------dark theme (will become main)------------------- */
 
     --dark--glass_rgb: rgba(36, 36, 36, 0.842);
     --dark--glass_border_rgb: rgba(129, 129, 129, 0.952);
@@ -58,7 +58,7 @@ body{
 .page {
     display: grid;
     grid-template-columns: 0.7fr 1fr 1fr 1fr;
-    grid-template-rows: 0.3fr 0.2fr fr fr 0.5fr;
+    grid-template-rows: 0.3fr 0.2fr fr 2fr 0.5fr;
     /* здесь специально допущена ошибка, чтобы он четвертую строку высоту определял всегда автоматом */
     grid-template-areas: 
     "header header header header" 
@@ -72,6 +72,7 @@ body{
     height: 100%;
     width: 80%;
     margin: auto;
+    margin-bottom: 1000px;
     
     animation: fadeIn 1s ease-in-out;
 }
@@ -89,7 +90,7 @@ header{
         
         height: 20%;
         margin-left: auto;
-        border-bottom: 1px solid var(--glass_border_rgb);
+        border-bottom: 1px solid var(--dark--glass_border_rgb);
         table-layout: fixed;
         width: 20%;
         justify-self: center;
@@ -129,11 +130,11 @@ footer{
 header, nav, .logInForm, aside, main, .output, footer, .search_to_tablet {
     padding: 20px;
     border-radius: 20px;
-    background: var(--glass_rgb);
+    background: var(--dark--glass_rgb);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
-    border: 1px solid var(--glass_border_rgb);
+    border: 1px solid var(--dark--glass_border_rgb);
 
 
 }
@@ -233,7 +234,10 @@ th:hover{
     
 }
 
-#output_table{
+
+
+
+#output_table, #search_out{
     max-height: 500px;
     overflow-y: scroll;   
 }
@@ -258,7 +262,7 @@ th:hover{
 .footer_body > table{
     margin: 0;
     margin-top: 10px;
-    border-bottom: 1px solid var(--glass_border_rgb);
+    border-bottom: 1px solid var(--dark--glass_border_rgb);
     table-layout: fixed;
     width: 20%;
 }
