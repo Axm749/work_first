@@ -9,15 +9,17 @@
 
     --light_text: #fff;
     --dark_text: #000;
-    --grey: #fff;
+    --grey: #aaaaaa;
     
 /* -------------------light theme------------------- */
     
     --glass_rgb: rgba(252, 252, 252, 0.2);
     --glass_border_rgb: rgba(255, 255, 255, 0.3);
-
+    
+    --grad_null_rgb: rgb(245, 255, 100);
     --grad_first_rgb: rgb(201, 240, 128);
     --grad_second_rgb: rgb(100, 198, 255);
+    
 
 /* -------------------dark theme------------------- */
 
@@ -56,20 +58,15 @@ body{
 .page {
     display: grid;
     grid-template-columns: 0.7fr 1fr 1fr 1fr;
-    grid-template-rows: 0.3fr 0.7fr 0.2fr fr 0.5fr;
+    grid-template-rows: 0.3fr 0.2fr fr fr 0.5fr;
     /* здесь специально допущена ошибка, чтобы он четвертую строку высоту определял всегда автоматом */
     grid-template-areas: 
     "header header header header" 
-    "nav auth auth auth"
+    "sidebar auth auth navbar"
     "sidebar main main main"
     "sidebar output output output"
     "footer footer footer footer";
-    /* grid-template-areas: 
-    "header header header header" 
-    "login_form login_form login_form login_form"
-    "login_form login_form login_form login_form"
-    "login_form login_form login_form login_form"
-    "footer footer footer footer"; */
+    
     gap: 20px;
     padding: 20px;
     height: 100%;
@@ -129,7 +126,7 @@ footer{
     grid-area: footer;
 }
 
-header, nav, .logInForm, aside, main, .output, footer, .authorized_screen {
+header, nav, .logInForm, aside, main, .output, footer, .search_to_tablet {
     padding: 20px;
     border-radius: 20px;
     background: var(--glass_rgb);
@@ -176,18 +173,13 @@ h3 {
 
 /* classes */
 
-.authorized_screen{
+.search_to_tablet{
     grid-area: auth;
-    /* display: none; */
 }
 
-
-
-
-.output > table{
-    width:100%;
+.search_to_tablet > table{
     padding: 2%;
-    background-image: linear-gradient(to bottom right, rgb(185, 250, 101), rgb(127, 208, 255));
+    background-image: linear-gradient(to bottom right, var(--grad_null_rgb), var(--grad_first_rgb));
     border-radius: 10px;
     margin-top: 10px;
     box-shadow: inherit;
@@ -195,34 +187,55 @@ h3 {
     -webkit-backdrop-filter: inherit;
     border: inherit;
     transition: all 0.5s;
-    
+    font-size: 1.5em;
+}
+
+.search_to_tablet > table td{
+    color: #000;
+}
+
+
+
+
+.output > table{
+    padding: 2%;
+    background-image: linear-gradient(to bottom right, var(--grad_first_rgb), var(--grad_second_rgb));
+    border-radius: 10px;
+    margin-top: 10px;
+    box-shadow: inherit;
+    backdrop-filter: inherit;
+    -webkit-backdrop-filter: inherit;
+    border: inherit;
+    transition: all 0.5s;
+    font-size: 1.5em;
     
 }
 
 th {
     color: var(--dark_text);
     border-bottom: 1px solid var(--grey);
-    /* width: max-content; */
+    
+    width: 3100px;
     cursor: pointer;
-    width: 29%;
+    text-align: center;
     transition: all 0.5s;
  }
 th:hover{
     transform: scale(110%);
-    background-color: #00000049;
-    color: #fff;
+    background-color: #00000027;
+    /* color: #fff; */
     border-radius: 5px;
 }
 
 .output > table td{
     color: var(--dark_text);
-    text-align: right;
+    text-align: center;
     
 }
 
 #output_table{
     max-height: 500px;
-    overflow-y: scroll;    
+    overflow-y: scroll;   
 }
 
 /* .output > table:hover{

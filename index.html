@@ -16,29 +16,48 @@
 
         <header id="heade">
                         
-            <h1>hello, this is a site for work and testing</h1>
+            <h1>hello, this is a site for work and testing <input type="button" id="User_Logout" value="Log out"></h1>
             <table>
                 <tr>
-                    <td><a href="http://google.com">link1</a></td>
-                    <td><a href="http://vk.com">link2</a></td>
-                    <td><a href="http://yandex.com">link3</a></td>
+                    <td><a href="_">link1 &#128505;</a></td>
+                    <td><a href="_">link2 &#128505;</a></td>
+                    <td><a href="https://github.com/Axm749/work_first">Git &boxbox;</a></td>
                 </tr>
             </table>
             
         </header>
 
-        <nav>
+        <nav style="display: none;">
             <!-- может вообще удалю его, так как есть header -->
             <h2>Navbar</h2>
-            <p>debug</p>
-            <button id="debug1">check token</button>
-            <button id="debug2">check 2</button>
+            <p>keep it here just in case</p>
         </nav>
 
-        <div class="authorized_screen" id="auth">
+        <div class="search_to_tablet" id="auth">
             <h2>Hello, registered user</h2>
-            <p>there will be something to do with inner stuff</p>
-            <input type="button" id="User_Logout" value="Log out">
+            <p>there will be something after you search</p>
+
+            <table id="search_out" style="display: block; table-layout: fixed;">
+                <thead>
+                    <tr>
+                        <th>login &UpArrowDownArrow;</th>
+                        <th>name &UpArrowDownArrow;</th>
+                        <th>role id &UpArrowDownArrow;</th>
+                        <th>status &UpArrowDownArrow;</th>
+                    </tr> 
+                </thead>
+                <tbody id="bodyTable">
+                    <!-- fill into here -->
+                    
+                    <tr style="display: none;">
+                        <th>login</th>
+                        <th>name</th>
+                        <th>role id</th>
+                        <th>status</th>
+                     </tr>
+                </tbody>                
+            </table> 
+
         </div>
 
         <main>   
@@ -80,21 +99,20 @@
        
         <div class="output" id="output_plate">
             <h2 style=>output plate</h2>
-            <input type="text" name="search_input" id="search_input" placeholder="login">
-            <button id="search_btn">search by login</button>
+            <p>search (highlighting)</p>
+            <input type="text" name="search_input0" id="search_input0" placeholder="login">
+            <input type="text" name="search_input1" id="search_input1" placeholder="name">
+            <input type="text" name="search_input2" id="search_input2" placeholder="role id">
+            <input type="text" name="search_input1" id="search_input3" placeholder="status">
+
 
             <table id="output_table" style="display: block; table-layout: fixed;">
-                <!-- <caption>
-                    <h2 style="color: var(--dark_text);">output table</h2>
-                </caption> -->
                 <thead>
                     <tr>
                         <th>login &UpArrowDownArrow;</th>
                         <th>name &UpArrowDownArrow;</th>
                         <th>role id &UpArrowDownArrow;</th>
                         <th>status &UpArrowDownArrow;</th>
-                        <!-- <th>max sessions &UpArrowDownArrow;</th>
-                        <th>logged in &UpArrowDownArrow;</th> -->
                     </tr> 
                 </thead>
                 <tbody id="bodyTable">
@@ -105,16 +123,16 @@
                         <th>name</th>
                         <th>role id</th>
                         <th>status</th>
-                        <!-- <th>max sessions</th>
-                        <th>logged in</th> -->
                      </tr>
                 </tbody>                
             </table> 
         </div>
             
         <aside>
-            <h2>Sidebar </h2>
+            <h2>Aside </h2>
             <p>debug</p>
+            <button id="debug1">check token</button>
+            <button id="debug2">check 2</button>
             <button id="debug3">change theme</button>
             <button id="debug4">example input (cause there is no connection to server)</button>
         </aside>           
@@ -153,7 +171,7 @@
         </footer>
     </div>
 
-    <div class="logInForm" id="login_form" style=" display:block; width: fit-content; margin: auto; margin-top: 20%;">
+    <div class="logInForm" id="login_form" style=" display:block; width: fit-content; margin: auto; margin-top: 20%; scale: 200%;">
         <h2 style="margin-top: 0%;">login form</h2> 
         <form name="loginIn">
             <p>username input <input name = "username" value="alfasatcom"></input>

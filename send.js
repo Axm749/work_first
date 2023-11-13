@@ -9,60 +9,7 @@ const get_call = document.getElementById("GetCall");
 const outputArea = document.getElementById("get_output")
 
 
-let Login_state = false;
 
-
-pls_token.onclick =  function get_token_first(){
-
-    let formData = new FormData(document.forms.loginIn);
-
-    let xhr = new XMLHttpRequest();
-
-    xhr.open("POST",requestAuthURL);
-    
-    xhr.onload = function(){
-        console.log(xhr.response);
-
-            let Token = JSON.parse(xhr.response)
-        console.log(Token);
-
-            let BearerToken = Token.access_token;
-        console.log('Token is',Token.access_token);
-
-            localStorage.setItem('BearerToken', BearerToken);
-            alert(localStorage.BearerToken);
-        console.log(xhr.status);
-    }
-    xhr.send(formData);
-
-    if (localStorage.BearerToken != null){
-        alert("local storage is not empty now and has token:", localStorage.BearerToken)
-    }
-
-    // uncomment to make it work only on success!
-    // if (xhr.status == 200)
-    {
-        // alert("local storage is not empty now and has token:", localStorage.BearerToken)
-        let grid_page = document.getElementById("page_grid");
-        var b = document.getElementById('login_form');
-
-        grid_page.style.display = "grid";
-        b.style.display = "none"
-
-
-
-
-        grid_page.style.gridTemplateAreas = `
-            "header header header header" 
-            "nav auth auth auth"
-            "sidebar main main main"
-            "sidebar output output output"
-            "footer footer footer footer"`;
-
-        Login_state = true;
-
-    }
-}
 
 get_call.onclick = function(){
     get_table()
@@ -89,67 +36,6 @@ async function get_table(){
     xhr.send()
 
 }
-
-
-const LogOff = document.getElementById("User_Logout");
-
-LogOff.onclick = function(){
-
-    check = confirm("do you want to log off?");
-
-    console.log(check);
-
-    if (check == true){
-
-        let formData = new FormData(document.forms.loginIn);
-
-        user = formData.get("username");
-    
-        let xhr = new XMLHttpRequest();
-    
-        let request = Log_OffURL +"?user_login="+user;
-    
-        console.log(request);
-    
-        xhr.open("POST",request);
-        xhr.setRequestHeader("Authorization", localStorage.getItem("Bearer_token"));
-    
-        xhr.onload = function(){
-            console.log(xhr.response);
-            console.log(xhr.status);
-        }
-    
-        xhr.send();
-
-        console.log("Logged off.")
-
-        let grid_page = document.getElementById("page_grid");
-        var b = document.getElementById('login_form');
-
-        grid_page.style.display = "none";
-        b.style.display = "block"
-
-        
-        // var c = document.getElementById('auth');
-        // var e = document.getElementById('User_Logout');
-
-        // e.style.display = "none";
-        // b.style.display = "block";
-        // c.style.display = "none";
-
-        // grid_page.style.gridTemplateAreas = `
-        //     "header header header header" 
-        //     "nav login_form login_form login_form"
-        //     "sidebar main main main"
-        //     "sidebar output output output"
-        //     "footer footer footer footer"`;
-
-    } else {
-        console.log("User decided to not log off.")
-    }
-
-}
-
 
 const creating_form = document.getElementById("create_form");
 
@@ -466,16 +352,13 @@ function getRandomInt(max) {
 const debug4 = document.getElementById("debug4");
 
 let count = 0
-let lenght_of_input = 5;
-
+let lenght_of_input = 2;
+let tab_len = 50;
 
 debug4.onclick = function example_fill(){
-    
-
-
 
     let Table_info = document.getElementById("output_table");
-    for (i=0; i<20; i++){
+    for (i=0; i<tab_len; i++){
         Table_info.insertRow().innerHTML+=`
         <td>${makeid(lenght_of_input)}</td>
         <td>${makeid(lenght_of_input)}</td>
@@ -487,6 +370,55 @@ debug4.onclick = function example_fill(){
     count+=1;
     console.log(rowCount + ' rows in total');
 }
+
+function find_and_blend(color, column){
+
+    let searching = document.getElementById(`search_input${column}`).value;
+    console.log(searching)
+    var correct = 0;
+    var as = document.getElementById('output_table');
+    for(var i=2;i<as.rows.length;i++) {
+        var trs = as.getElementsByTagName("tr")[i];
+        var cellVal=trs.cells[column]
+        if (cellVal.innerHTML == searching){
+            console.log(cellVal.innerHTML + '=' + searching)
+            console.log('we found it!')
+            console.log('that was iteration:'+(i-1))
+
+            document.getElementById('output_table').getElementsByTagName("tr")[i].style.background = `${color}`;
+            correct+=1;
+        }
+        else{
+            document.getElementById('output_table').getElementsByTagName("tr")[i].style.background = 'transparent';
+        }
+    }
+
+    if(correct >=1){
+            console.log('total found:' + correct)
+            // return correct
+    }
+}
+
+input_for_search0 = document.getElementById("search_input0")
+input_for_search1 = document.getElementById("search_input1")
+input_for_search2 = document.getElementById("search_input2")
+input_for_search3 = document.getElementById("search_input3")
+
+input_for_search0.onkeyup = function(){
+        find_and_blend('#00000023', 0)
+    }
+input_for_search1.onkeyup = function(){
+        find_and_blend('#00000023', 1)
+    }
+input_for_search2.onkeyup = function(){
+        find_and_blend('#00000023', 2)
+    }
+input_for_search3.onkeyup = function(){
+        find_and_blend('#00000023', 3)
+    }
+
+
+
 
 
 
