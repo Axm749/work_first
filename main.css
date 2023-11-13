@@ -1,0 +1,308 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+
+/* just main things */
+
+:root{
+    
+/* ---------------------mutual---------------------  */
+
+    --light_text: #fff;
+    --dark_text: #000;
+    --grey: #fff;
+    
+/* -------------------light theme------------------- */
+    
+    --glass_rgb: rgba(252, 252, 252, 0.2);
+    --glass_border_rgb: rgba(255, 255, 255, 0.3);
+
+    --grad_first_rgb: rgb(201, 240, 128);
+    --grad_second_rgb: rgb(100, 198, 255);
+
+/* -------------------dark theme------------------- */
+
+    --dark--glass_rgb: rgba(36, 36, 36, 0.842);
+    --dark--glass_border_rgb: rgba(129, 129, 129, 0.952);
+
+    
+}
+
+
+* {
+    text-align: justify;
+    font: normal 1em 'Roboto', sans-serif;
+    color: var(--light_text);
+    
+}
+video{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+
+
+body{
+    margin: 0;
+    padding: 0;
+}
+
+
+
+.page {
+    display: grid;
+    grid-template-columns: 0.7fr 1fr 1fr 1fr;
+    grid-template-rows: 0.3fr 0.7fr 0.2fr fr 0.5fr;
+    /* здесь специально допущена ошибка, чтобы он четвертую строку высоту определял всегда автоматом */
+    grid-template-areas: 
+    "header header header header" 
+    "nav auth auth auth"
+    "sidebar main main main"
+    "sidebar output output output"
+    "footer footer footer footer";
+    /* grid-template-areas: 
+    "header header header header" 
+    "login_form login_form login_form login_form"
+    "login_form login_form login_form login_form"
+    "login_form login_form login_form login_form"
+    "footer footer footer footer"; */
+    gap: 20px;
+    padding: 20px;
+    height: 100%;
+    width: 80%;
+    margin: auto;
+    
+    animation: fadeIn 1s ease-in-out;
+}
+
+header{
+    grid-area: header;
+    display: flex;
+}
+    header > h1{
+        text-align: left;
+    }
+    header > table{
+        text-align: right;
+        padding: 0;
+        
+        height: 20%;
+        margin-left: auto;
+        border-bottom: 1px solid var(--glass_border_rgb);
+        table-layout: fixed;
+        width: 20%;
+        justify-self: center;
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+
+nav {
+    grid-area: nav;
+
+}
+
+.logInForm{
+    grid-area: login_form;
+    display: none;
+}
+
+aside{
+    grid-area: sidebar;
+    
+}
+
+main{
+    grid-area: main;
+  
+}
+
+.output{
+    grid-area: output;
+    
+}
+
+footer{
+    grid-area: footer;
+}
+
+header, nav, .logInForm, aside, main, .output, footer, .authorized_screen {
+    padding: 20px;
+    border-radius: 20px;
+    background: var(--glass_rgb);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid var(--glass_border_rgb);
+
+
+}
+
+
+
+/* for specific tags */
+
+
+h1{
+    font-size: 2.5em;
+    font-weight: bold;
+    margin: 0;
+    color: #fff;
+    padding: 15px;    
+}
+
+h2 {
+    font-size: 2em;
+    font-weight: bold;
+    margin: inherit;
+}
+
+h3 {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin: 0;
+    margin-top: 10px;
+}
+
+
+
+
+
+
+
+
+/* classes */
+
+.authorized_screen{
+    grid-area: auth;
+    /* display: none; */
+}
+
+
+
+
+.output > table{
+    width:100%;
+    padding: 2%;
+    background-image: linear-gradient(to bottom right, rgb(185, 250, 101), rgb(127, 208, 255));
+    border-radius: 10px;
+    margin-top: 10px;
+    box-shadow: inherit;
+    backdrop-filter: inherit;
+    -webkit-backdrop-filter: inherit;
+    border: inherit;
+    transition: all 0.5s;
+    
+    
+}
+
+th {
+    color: var(--dark_text);
+    border-bottom: 1px solid var(--grey);
+    /* width: max-content; */
+    cursor: pointer;
+    width: 29%;
+    transition: all 0.5s;
+ }
+th:hover{
+    transform: scale(110%);
+    background-color: #00000049;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.output > table td{
+    color: var(--dark_text);
+    text-align: right;
+    
+}
+
+#output_table{
+    max-height: 500px;
+    overflow-y: scroll;    
+}
+
+/* .output > table:hover{
+    background-image: linear-gradient(to bottom right, rgba(213, 255, 135, 0.6), rgba(100, 198, 255, 0.6));
+    transform: scale(103%);
+    animation: ease-in-out 0.3s;
+} */
+
+
+.logInForm{
+    background-color: rgba(0, 255, 255, 0.15);
+}
+
+#create_tab {
+    display: none;
+}
+
+
+
+.footer_body > table{
+    margin: 0;
+    margin-top: 10px;
+    border-bottom: 1px solid var(--glass_border_rgb);
+    table-layout: fixed;
+    width: 20%;
+}
+
+
+
+
+
+
+/* here are elements, not classes */
+
+button {
+    background-color: transparent;
+    margin-top: 5px;
+    padding:  15px 20px;
+    color: #fff;
+    border: 1px solid #fff;
+    border-radius: 20px;
+    font-family: inherit;
+    transition: 0.8s;
+    cursor: pointer;
+}
+button:hover{
+    color: white;
+    background-color: #000;
+    transform: scale(103%);
+    cursor: pointer;
+}
+button:active{
+    background-color: #444;
+    color: white;
+}
+
+input, select, option {
+    background-color: #00000038;
+    border: none;
+    padding: 5px;
+    margin-top: 15px;
+    border-radius: 5px;
+    transition: 0.15s;
+}
+input:hover, select:hover {
+    color: #fff;
+    background-color: #00000049;
+    transform: scale(101%);
+}
+input:active, select:active {
+    background-color: #888;
+    transform: scale(99%);
+}
+
+
+
+
+
+
+
+
+
+

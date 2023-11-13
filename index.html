@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+    <title>верстка сайта для работы</title>
+    <script src="code.jquery.com_jquery-3.7.1.min.js"></script>
+    
+
+</head>
+<body>
+    <video src="bg_loop.mp4" autoplay loop muted></video>
+    
+    <div class="page" id="page_grid" style="display: none;">
+
+        <header id="heade">
+                        
+            <h1>hello, this is a site for work and testing</h1>
+            <table>
+                <tr>
+                    <td><a href="http://google.com">link1</a></td>
+                    <td><a href="http://vk.com">link2</a></td>
+                    <td><a href="http://yandex.com">link3</a></td>
+                </tr>
+            </table>
+            
+        </header>
+
+        <nav>
+            <!-- может вообще удалю его, так как есть header -->
+            <h2>Navbar</h2>
+            <p>debug</p>
+            <button id="debug1">check token</button>
+            <button id="debug2">check 2</button>
+        </nav>
+
+        <div class="authorized_screen" id="auth">
+            <h2>Hello, registered user</h2>
+            <p>there will be something to do with inner stuff</p>
+            <input type="button" id="User_Logout" value="Log out">
+        </div>
+
+        <main>   
+            <!-- <h1 id="req_for_login">Authorize first </h1> -->
+            <!-- <p id="above_login_form">form is used for authorization and will be hidden after logging in succesfully. I wish so.</p> -->
+            <h2>main list</h2>
+            <div class="funks" id="funks">
+                <input type="button" id="GetCall" value="get whole table"      >
+                <input type="button" id="clear_table" value="clear table (WIP)">
+                <input type="button" id="create_form" value="create/edit user"      >
+                
+                <input type="button" id="DELETE_user" value="delete user"      >                
+            </div>
+
+            <div class="create_tab" id="create_tab">
+                <form name="NewUser">
+                    <input id="New_Login" placeholder="Логин" required>
+                    <input id="New_Password" placeholder="Пароль" required>
+                    <input id="New_Name" placeholder="Имя" required>
+                    <select id="New_Role_Id" required>
+                        <option value="customer" selected>customer</option>
+                        <option value="controller"> controller</option>
+                        <option value="supervisor"> supervisor</option>
+                        <option value="administrator"> administrator</option>
+                    </select>
+                </form>
+                
+                <input type="button" id="Create_User" value="submit create">
+                <input type="button" id="Edit_user" value="edit user (next will be id input)">
+                <input type="button" id="cancel_create" value="cancel">              
+                
+            </div>
+                            
+            <!-- <p>for a theme switch, try This
+                <input type="color" id="Create_User" value="#00aa00">
+            </p> -->
+
+        </main>
+       
+        <div class="output" id="output_plate">
+            <h2 style=>output plate</h2>
+            <input type="text" name="search_input" id="search_input" placeholder="login">
+            <button id="search_btn">search by login</button>
+
+            <table id="output_table" style="display: block; table-layout: fixed;">
+                <!-- <caption>
+                    <h2 style="color: var(--dark_text);">output table</h2>
+                </caption> -->
+                <thead>
+                    <tr>
+                        <th>login &UpArrowDownArrow;</th>
+                        <th>name &UpArrowDownArrow;</th>
+                        <th>role id &UpArrowDownArrow;</th>
+                        <th>status &UpArrowDownArrow;</th>
+                        <!-- <th>max sessions &UpArrowDownArrow;</th>
+                        <th>logged in &UpArrowDownArrow;</th> -->
+                    </tr> 
+                </thead>
+                <tbody id="bodyTable">
+                    <!-- fill into here -->
+                    
+                    <tr style="display: none;">
+                        <th>login</th>
+                        <th>name</th>
+                        <th>role id</th>
+                        <th>status</th>
+                        <!-- <th>max sessions</th>
+                        <th>logged in</th> -->
+                     </tr>
+                </tbody>                
+            </table> 
+        </div>
+            
+        <aside>
+            <h2>Sidebar </h2>
+            <p>debug</p>
+            <button id="debug3">change theme</button>
+            <button id="debug4">example input (cause there is no connection to server)</button>
+        </aside>           
+
+        <footer>
+            <div class="footer_title">
+                <h3>footer title</h3>
+            </div>
+            <div class="footer_body">
+                <p>footer body: links as example</p>
+                <table>
+                    <tr>
+                        <td><a href="http://google.com">google</a></td>
+                        <td><a href="http://vk.com">vk</a></td>
+                        <td><a href="http://yandex.com">yandex</a></td>
+                        
+                    </tr>
+                </table>
+                <p>All rights recieved, etc. &copy;</p>
+                <!-- <table id="test_table">
+                    <caption>hi</caption>
+                    <thead>
+                        <tr>
+                            <td>col 1</td>
+                            <td>col 2</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td> layer 11</td>
+                            <td> layer 12</td>
+                        </tr>
+                    </tbody>
+                </table> -->
+            </div>
+        </footer>
+    </div>
+
+    <div class="logInForm" id="login_form" style=" display:block; width: fit-content; margin: auto; margin-top: 20%;">
+        <h2 style="margin-top: 0%;">login form</h2> 
+        <form name="loginIn">
+            <p>username input <input name = "username" value="alfasatcom"></input>
+            </p>  
+            <p>password input <input name = "password" value="alfasatcom"></input>
+            </p>
+        </form>
+        <input type="button" id="Get_token" value="authorize"> 
+    </div>
+
+
+    
+
+    
+    <script src="hello_page.js"></script>
+    <script src="send.js"></script>
+    <script src="keySearch.js"></script>
+
+    <script src="visual.js"></script>
+
+    <script defer>
+        sort_table_by_column(document.querySelector("#output_table"));
+    </script>
+
+    <script>
+        // search through search-input
+        // $('#search_input').on('keyup', function(){
+        //     var value = $(this).val()
+        //     console.log('Value in the field is:', value)
+        //     var data = 
+        // })
+
+        // table = $('#output_table')
+
+        // function searchTable(table, data){
+        //     var filtered_data = []
+
+        //     for(var i = 0; i < data.lenght; i++)
+        //     {
+
+        //     }
+
+        //     return filtered_data
+        // }
+
+
+    </script>
+
+
+</body>
+</html>
