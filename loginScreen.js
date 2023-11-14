@@ -1,7 +1,9 @@
 let Login_state = false;
 
-pls_token.onclick =  function get_token_first(){
+const pls_token = document.getElementById("Get_token");
 
+pls_token.onclick =  function get_token_first(){
+            
     let formData = new FormData(document.forms.loginIn);
 
     let xhr = new XMLHttpRequest();
@@ -23,12 +25,10 @@ pls_token.onclick =  function get_token_first(){
     }
     xhr.send(formData);
 
-    if (localStorage.BearerToken != null){
-        alert("local storage is not empty now and has token:", localStorage.BearerToken)
-    }
+    
 
     // uncomment to make it work only on success!
-    // if (xhr.status == 200)
+    if (xhr.status == 200)
     {
         // alert("local storage is not empty now and has token:", localStorage.BearerToken)
         let grid_page = document.getElementById("page_grid");
@@ -53,9 +53,6 @@ pls_token.onclick =  function get_token_first(){
 
     }
 }
-
-
-
 
 const LogOff = document.getElementById("User_Logout");
 
@@ -96,9 +93,37 @@ LogOff.onclick = function(){
         b.style.display = "block"
 
         Login_state = false;
+        localStorage.removeItem("Bearer_token")
 
     } else {
         console.log("User decided to not log off.")
     }
 
 }
+
+const to_main = document.getElementById("get_to_auth");
+to_main.onclick =  function(){
+
+    // alert("local storage is not empty now and has token:", localStorage.BearerToken)
+    let grid_page = document.getElementById("page_grid");
+    var b = document.getElementById('login_form');
+
+    grid_page.style.display = "grid";
+    b.style.display = "none"
+
+
+
+
+    grid_page.style.gridTemplateAreas = `
+        "header header header header" 
+        "sidebar main main main"
+        
+        
+        "sidebar output output output"
+        "sidebar auth auth auth"
+        "footer footer footer footer"`;
+
+    Login_state = true;
+
+}
+// get_to_auth

@@ -53,14 +53,11 @@ function sort_table_by_column(html_table_object){
         // будет&UpArrowDownArrow применяться .sort((a,b))
         // оно проверяет знак перед разницу (a-b < 0 или >0)
         //  a - трейс, его ребёнок - ячейка th, а уже его innerText - содержимое
-
         return [...rows].sort((a,b)=> ( (a.children[position].innerText < b.children[position].innerText) ? -1 : 1) )
     }
 
     // sort dsc
     function sort_body_dsc(position){
-        
-        
         return [...rows].sort((a,b)=> ( (a.children[position].innerText > b.children[position].innerText) ? -1 : 1) )
     }
 

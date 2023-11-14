@@ -4,7 +4,7 @@ const GetURL = "http://0.0.0.0:4040/api/v1/users";
 const UsersURL = GetURL;
 const Log_OffURL ="http://0.0.0.0:4040/api/v1/auth/user/logoff";
 
-const pls_token = document.getElementById("Get_token");
+
 const get_call = document.getElementById("GetCall");
 const outputArea = document.getElementById("get_output")
 
@@ -27,9 +27,38 @@ async function get_table(){
 
         console.log(output);
         console.log(xhr.status);
-        localStorage.setItem("UsersInTable_info", xhr.response)
+        localStorage.setItem("UsersTable", xhr.response)
         // выводим таблицу с помощью функции
+        clear_table()
         get_out(output);
+
+        {
+            let output_table2 = document.getElementById("search_out");
+            clear_table2()
+        
+            let searching = document.getElementById(`search_input${0}`).value;
+            console.log(searching)
+        
+            var correct = 0;
+                var as = document.getElementById('output_table');
+        
+        
+            if(searching == ""){
+                for(var i=2;i<as.rows.length;i++) {
+                    var trs = as.getElementsByTagName("tr")[i];
+                    {
+                        output_table2.insertRow().innerHTML+=`
+                            <td>${trs.cells[0].innerHTML}</td>
+                            <td>${trs.cells[1].innerHTML}</td>
+                            <td>${trs.cells[2].innerHTML}</td>
+                            <td>${trs.cells[3].innerHTML}</td>
+                            `;
+                    }
+                }
+                console.log('no input, show all')
+            }
+        
+        }
 
         
     }
@@ -75,9 +104,9 @@ Create.onclick = function(){
 
     if (Data.login != "",Data.password != "",Data.name != "",Data.role_id != ""){
 
-        check = confirm("do you really wish to create a new user?");
+        // check = confirm("do you really wish to create a new user?");
 
-        if (check === true){
+        // if (check === true){
 
             console.log("Userd said: ",check);
                 
@@ -114,9 +143,9 @@ Create.onclick = function(){
             console.log("User decided to not create a new user.")
         }
 
-    } else {
-        alert("Не все поля заполнены")
-    }
+    // } else {
+    //     alert("Не все поля заполнены")
+    // }
 
 
 }
@@ -146,7 +175,7 @@ Edit_User.onclick = function(){
 
     if (Data.login != "",Data.password != "",Data.name != ""){
 
-        insert_id = window.prompt("Input user id to edit:");
+        insert_id = getId()
             
         let xhr = new XMLHttpRequest();
 
@@ -160,7 +189,7 @@ Edit_User.onclick = function(){
 
         xhr.setRequestHeader("Content-Type", "application/json");
 
-        xhr.setRequestHeader("Authorization", localStorage.getItem("Bearer_token"));
+        xhr.setRequestHeader("Authorization", "Bearer "+localStorage.BearerToken);
 
         xhr.onload = function(){
             console.log(xhr.response);
@@ -168,6 +197,13 @@ Edit_User.onclick = function(){
         }
 
         xhr.send(Send_Data);
+
+        alert('done')
+        var a = document.getElementById("create_tab");
+        a.style.display = "none";
+        var b = document.getElementById("funks")
+        b.style.display = "block"; 
+        // get_table()
 
     } else {
         alert("Не все поля заполнены")
@@ -188,7 +224,7 @@ DELETE_User.onclick = function(){
 
     if (check == true){
 
-        insert_id = window.prompt("Input user id to delete");
+        insert_id = getId();
             
         let xhr = new XMLHttpRequest();
 
@@ -348,3 +384,6 @@ function makeid(length) {
     }
     return result;
 }
+
+
+

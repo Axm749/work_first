@@ -74,7 +74,7 @@ body{
     margin: auto;
     margin-bottom: 1000px;
     
-    animation: fadeIn 1s ease-in-out;
+    animation: ease-in-out 1s ease-in-out;
 }
 
 header{
@@ -215,12 +215,12 @@ h3 {
 th {
     color: var(--dark_text);
     border-bottom: 1px solid var(--grey);
-    
     width: 3100px;
     cursor: pointer;
     text-align: center;
     transition: all 0.5s;
- }
+    user-select: none;
+}
 th:hover{
     transform: scale(110%);
     background-color: #00000027;
@@ -228,10 +228,29 @@ th:hover{
     border-radius: 5px;
 }
 
+
+
+/* td {
+    
+}
+td:hover{
+    transform: scale(110%);
+    background-color: #00000027;
+    border-radius: 5px;
+} */ 
+
 .output > table td{
     color: var(--dark_text);
     text-align: center;
-    
+    width: 3100px;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.5s;
+}
+.output > table td:hover{
+    transform: scale(105%);
+    background-color: #00000027;
+    border-radius: 5px;
 }
 
 

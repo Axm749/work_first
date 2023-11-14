@@ -1,4 +1,20 @@
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function find_and_blend(color, column){
     let output_table2 = document.getElementById("search_out");
     clear_table2()
@@ -6,19 +22,24 @@ function find_and_blend(color, column){
     let searching = document.getElementById(`search_input${column}`).value;
     console.log(searching)
 
+    var correct = 0;
+        var as = document.getElementById('output_table');
+
+
     if(searching == ""){
+        get_all()
+        // console.log('no input, show all')
         return
     }
 
-    var correct = 0;
-    var as = document.getElementById('output_table');
+    
     for(var i=2;i<as.rows.length;i++) {
         var trs = as.getElementsByTagName("tr")[i];
         var cellVal=trs.cells[column]
         if (cellVal.innerHTML.includes(searching)){
-            console.log(cellVal.innerHTML + '=' + searching)
-            console.log('we found it!')
-            console.log('that was iteration:'+(i-1))
+            // console.log(cellVal.innerHTML + '=' + searching)
+            // console.log('we found it!')
+            // console.log('that was iteration:'+(i-1))
 
             document.getElementById('output_table').getElementsByTagName("tr")[i].style.background = `${color}`;
             correct+=1;
@@ -72,3 +93,34 @@ input_for_search2.onkeyup = function(){
 input_for_search3.onkeyup = function(){
         find_and_blend('#00000023', 3)
     }
+
+
+
+
+
+function get_all(){
+    let output_table2 = document.getElementById("search_out");
+    clear_table2()
+
+    let searching = document.getElementById(`search_input${0}`).value;
+    // console.log(searching)
+
+    var correct = 0;
+        var as = document.getElementById('output_table');
+
+        for(var i=2;i<as.rows.length;i++) {
+            var trs = as.getElementsByTagName("tr")[i];
+            {
+                output_table2.insertRow().innerHTML+=`
+                    <td>${trs.cells[0].innerHTML}</td>
+                    <td>${trs.cells[1].innerHTML}</td>
+                    <td>${trs.cells[2].innerHTML}</td>
+                    <td>${trs.cells[3].innerHTML}</td>
+                    `;
+            }
+        }
+        // console.log('no input, show all')
+}
+
+
+    

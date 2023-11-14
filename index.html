@@ -6,11 +6,14 @@
     <link rel="stylesheet" href="main.css">
     <title>верстка сайта для работы</title>
     <script src="code.jquery.com_jquery-3.7.1.min.js"></script>
+    <script src="auto_login.js" defer></script>
     
 
 </head>
 <body>
-    <video src="bg_loop.mp4" autoplay loop muted></video>
+    <video src="bg_loop.mp4" autoplay loop muted preload="auto">
+        loading
+    </video>
     
     <div class="page" id="page_grid" style="display: none;">
 
@@ -86,7 +89,7 @@
                 </form>
                 
                 <input type="button" id="Create_User" value="submit create">
-                <input type="button" id="Edit_user" value="edit user (next will be id input)">
+                <input type="button" id="Edit_user" value="edit user">
                 <input type="button" id="cancel_create" value="cancel">              
                 
             </div>
@@ -106,7 +109,7 @@
             <input type="text" name="search_input1" id="search_input3" placeholder="status">
 
 
-            <table id="output_table" style="display: block; table-layout: fixed;">
+            <table id="output_table" style="display: none; table-layout: fixed;">
                 <thead>
                     <tr>
                         <th>login &UpArrowDownArrow;</th>
@@ -131,10 +134,12 @@
         <aside>
             <h2>Aside </h2>
             <p>debug</p>
-            <button id="debug1">check token</button>
+            
             <button id="debug2">check 2</button>
             <button id="debug3">change theme</button>
             <button id="debug4">example input (cause there is no connection to server)</button>
+            <button id="debug5">log table</button>
+
         </aside>           
 
         <footer>
@@ -152,24 +157,13 @@
                     </tr>
                 </table>
                 <p>All rights recieved, etc. &copy;</p>
-                <!-- <table id="test_table">
-                    <caption>hi</caption>
-                    <thead>
-                        <tr>
-                            <td>col 1</td>
-                            <td>col 2</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td> layer 11</td>
-                            <td> layer 12</td>
-                        </tr>
-                    </tbody>
-                </table> -->
             </div>
         </footer>
     </div>
+
+
+
+
 
     <div class="logInForm" id="login_form" style=" display:block; width: fit-content; margin: auto; margin-top: 20%; scale: 200%;">
         <h2 style="margin-top: 0%;">login form</h2> 
@@ -180,19 +174,20 @@
             </p>
         </form>
         <input type="button" id="Get_token" value="authorize"> 
+        <button id="debug1">check token</button>
+        <button id="get_to_auth">already authorized</button>
     </div>
 
 
     
 
     
-    <script src="hello_page.js"></script>
     <script src="send.js"></script>
     <script src="debug.js"></script>
     <script src="loginScreen.js"></script>
     <script src="realtimeSearch.js"></script>
-    <script src="search_output_above.js"></script>
     <script src="sort_ASC_DSC.js"></script>
+    <script src="get_id.js"></script>
 
     
     <script defer>
