@@ -22,36 +22,30 @@ pls_token.onclick =  function get_token_first(){
             localStorage.setItem('BearerToken', BearerToken);
             alert(localStorage.BearerToken);
         console.log(xhr.status);
+        if (xhr.status == 200)
+        {
+            alert("its alright", localStorage.BearerToken)
+            let grid_page = document.getElementById("page_grid");
+                let login_form = document.getElementById('login_form');
+
+                grid_page.style.display = "grid";
+                login_form.style.display = "none"
+
+                grid_page.style.gridTemplateAreas = `
+                    "header header header header" 
+                    "sidebar main main main"
+                    "sidebar output output output"
+                    "sidebar auth auth auth"
+                    "footer footer footer footer"`;
+
+                Login_state = true;
+            get_table()
+
+        }
     }
     xhr.send(formData);
-
-    
-
     // uncomment to make it work only on success!
-    if (xhr.status == 200)
-    {
-        // alert("local storage is not empty now and has token:", localStorage.BearerToken)
-        let grid_page = document.getElementById("page_grid");
-        var b = document.getElementById('login_form');
-
-        grid_page.style.display = "grid";
-        b.style.display = "none"
-
-
-
-
-        grid_page.style.gridTemplateAreas = `
-            "header header header header" 
-            "sidebar main main main"
-            
-            
-            "sidebar output output output"
-            "sidebar auth auth auth"
-            "footer footer footer footer"`;
-
-        Login_state = true;
-
-    }
+    
 }
 
 const LogOff = document.getElementById("User_Logout");

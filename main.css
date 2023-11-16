@@ -11,21 +11,18 @@
     --dark_text: #000;
     --grey: #aaaaaa;
     
-/* -------------------light theme------------------- */
-    
-    --glass_rgb: rgba(252, 252, 252, 0.2);
-    --glass_border_rgb: rgba(255, 255, 255, 0.3);
+/* -------------------table theme------------------- */
+
     
     --grad_null_rgb: rgb(245, 255, 100);
-    --grad_first_rgb: rgb(201, 240, 128);
+    --grad_first_rgb: rgb(178, 240, 128);
     --grad_second_rgb: rgb(100, 198, 255);
     
 
 /* -------------------dark theme (will become main)------------------- */
 
-    --dark--glass_rgb: rgba(36, 36, 36, 0.842);
-    --dark--glass_border_rgb: rgba(129, 129, 129, 0.952);
-
+    --main--glass_rgb: rgba(36, 36, 36, 0.842);
+    --main--glass_border_rgb: rgba(129, 129, 129, 0.952);
     
 }
 
@@ -58,6 +55,7 @@ body{
 .page {
     display: grid;
     grid-template-columns: 0.7fr 1fr 1fr 1fr;
+
     grid-template-rows: 0.3fr 0.2fr fr 2fr 0.5fr;
     /* здесь специально допущена ошибка, чтобы он четвертую строку высоту определял всегда автоматом */
     grid-template-areas: 
@@ -90,7 +88,7 @@ header{
         
         height: 20%;
         margin-left: auto;
-        border-bottom: 1px solid var(--dark--glass_border_rgb);
+        border-bottom: 1px solid var(--main--glass_border_rgb);
         table-layout: fixed;
         width: 20%;
         justify-self: center;
@@ -130,11 +128,11 @@ footer{
 header, nav, .logInForm, aside, main, .output, footer, .search_to_tablet {
     padding: 20px;
     border-radius: 20px;
-    background: var(--dark--glass_rgb);
+    background: var(--main--glass_rgb);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
-    border: 1px solid var(--dark--glass_border_rgb);
+    border: 1px solid var(--main--glass_border_rgb);
 
 
 }
@@ -193,6 +191,7 @@ h3 {
 
 .search_to_tablet > table td{
     color: #000;
+    /* transition: all 0.5s; */
 }
 
 
@@ -230,14 +229,15 @@ th:hover{
 
 
 
-/* td {
+tbody tr {
+    transition: all 0.5s;
     
-}
-td:hover{
-    transform: scale(110%);
+} 
+.search_to_tablet  tbody tr:hover{
+    transform: scale(102%);
     background-color: #00000027;
-    border-radius: 5px;
-} */ 
+    border-radius: 20px;
+}
 
 .output > table td{
     color: var(--dark_text);
@@ -269,7 +269,7 @@ td:hover{
 
 
 .logInForm{
-    background-color: rgba(0, 255, 255, 0.15);
+    background-color: rgba(59, 59, 59, 0.774);
 }
 
 #create_tab {
@@ -281,7 +281,7 @@ td:hover{
 .footer_body > table{
     margin: 0;
     margin-top: 10px;
-    border-bottom: 1px solid var(--dark--glass_border_rgb);
+    border-bottom: 1px solid var(--main--glass_border_rgb);
     table-layout: fixed;
     width: 20%;
 }
@@ -323,10 +323,19 @@ input, select, option {
     border-radius: 5px;
     transition: 0.15s;
 }
+
+/* .search{
+    display: inline-block;
+} */
+.search input{
+    display: inline-block;
+    width: 20%;
+    margin: 0;
+}
 input:hover, select:hover {
     color: #fff;
     background-color: #00000049;
-    transform: scale(101%);
+    transform: scale(105%);
 }
 input:active, select:active {
     background-color: #888;

@@ -4,14 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="main.css">
+    <link href="https://fonts.cdnfonts.com/css/roboto" rel="stylesheet">
     <title>верстка сайта для работы</title>
-    <script src="code.jquery.com_jquery-3.7.1.min.js"></script>
+    <!-- <script src="code.jquery.com_jquery-3.7.1.min.js"></script> -->
     <script src="auto_login.js" defer></script>
     
 
 </head>
 <body>
-    <video src="bg_loop.mp4" autoplay loop muted preload="auto">
+    <video src="Comp_8.mp4" autoplay loop muted preload="auto">
         loading
     </video>
     
@@ -19,15 +20,15 @@
 
         <header id="heade">
                         
-            <h1>hello, this is a site for work and testing <input type="button" id="User_Logout" value="Log out"></h1>
+            <h1>Страница для взаимодействия с бд</h1>
             <table>
                 <tr>
-                    <td><a href="_">link1 &#128505;</a></td>
-                    <td><a href="_">link2 &#128505;</a></td>
-                    <td><a href="https://github.com/Axm749/work_first">Git &boxbox;</a></td>
+                    <td><a href="_">link1 </a></td>
+                    <td><a href="_">link2 </a></td>
+                    <td><a href="https://github.com/Axm749/work_first">Git &#128505;</a></td>
                 </tr>
             </table>
-            
+            <input type="button" id="User_Logout" value="выйти">
         </header>
 
         <nav style="display: none;">
@@ -37,8 +38,8 @@
         </nav>
 
         <div class="search_to_tablet" id="auth">
-            <h2>Hello, registered user</h2>
-            <p>there will be something after you search</p>
+            <h2>Поле вывода</h2>
+            <p>здесь высвечивается вся таблица или результаты поиска</p>
 
             <table id="search_out" style="display: block; table-layout: fixed;">
                 <thead>
@@ -66,13 +67,13 @@
         <main>   
             <!-- <h1 id="req_for_login">Authorize first </h1> -->
             <!-- <p id="above_login_form">form is used for authorization and will be hidden after logging in succesfully. I wish so.</p> -->
-            <h2>main list</h2>
+            <h2>temporary list</h2>
             <div class="funks" id="funks">
                 <input type="button" id="GetCall" value="get whole table"      >
                 <input type="button" id="clear_table" value="clear table (WIP)">
-                <input type="button" id="create_form" value="create/edit user"      >
+                <input type="button" id="create_form" value="create/edit user">
                 
-                <input type="button" id="DELETE_user" value="delete user"      >                
+                <input type="button" id="DELETE_user" value="delete user">                
             </div>
 
             <div class="create_tab" id="create_tab">
@@ -101,13 +102,15 @@
         </main>
        
         <div class="output" id="output_plate">
-            <h2 style=>output plate</h2>
-            <p>search (highlighting)</p>
-            <input type="text" name="search_input0" id="search_input0" placeholder="login">
-            <input type="text" name="search_input1" id="search_input1" placeholder="name">
-            <input type="text" name="search_input2" id="search_input2" placeholder="role id">
-            <input type="text" name="search_input1" id="search_input3" placeholder="status">
-
+            <h2 style=>Поле поиска</h2>
+            <p>поиск подсветит ниже в таблице только подходящее вам, но лишь по последнему введенному параметру</p>
+            <div class="search">
+                <input type="text" name="search_input0" id="search_input0" placeholder="login">
+                <input type="text" name="search_input1" id="search_input1" placeholder="name">
+                <input type="text" name="search_input2" id="search_input2" placeholder="role id">
+                <input type="text" name="search_input1" id="search_input3" placeholder="status">
+            </div>
+           
 
             <table id="output_table" style="display: none; table-layout: fixed;">
                 <thead>
@@ -133,21 +136,21 @@
             
         <aside>
             <h2>Aside </h2>
-            <p>debug</p>
+            <p>дополнительный функционал</p>
             
-            <button id="debug2">check 2</button>
-            <button id="debug3">change theme</button>
-            <button id="debug4">example input (cause there is no connection to server)</button>
-            <button id="debug5">log table</button>
+            <!-- <button id="debug2">check 2</button> -->
+            <button id="debug3">изменить тему</button>
+            <button id="debug4">пробный ввод для служебных нужд</button>
+            <!-- <button id="debug5">log table</button> -->
 
         </aside>           
 
         <footer>
             <div class="footer_title">
-                <h3>footer title</h3>
+                <h3>footer</h3>
             </div>
             <div class="footer_body">
-                <p>footer body: links as example</p>
+                <p>footer body: здесь можно разместить, например, ссылки</p>
                 <table>
                     <tr>
                         <td><a href="http://google.com">google</a></td>
@@ -168,14 +171,17 @@
     <div class="logInForm" id="login_form" style=" display:block; width: fit-content; margin: auto; margin-top: 20%; scale: 200%;">
         <h2 style="margin-top: 0%;">login form</h2> 
         <form name="loginIn">
-            <p>username input <input name = "username" value="alfasatcom"></input>
+            <p>username input <input name = "username" value=""></input>
             </p>  
-            <p>password input <input name = "password" value="alfasatcom"></input>
+            <p>password input <input name = "password" value=""></input>
             </p>
         </form>
         <input type="button" id="Get_token" value="authorize"> 
-        <button id="debug1">check token</button>
-        <button id="get_to_auth">already authorized</button>
+        <p>debug: 
+            <button id="debug1">check token</button>
+            <button id="get_to_auth">enter without login</button>
+        </p>
+        
     </div>
 
 

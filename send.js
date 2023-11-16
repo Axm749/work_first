@@ -100,13 +100,13 @@ Create.onclick = function(){
 
     console.log(Data);
 
-    alert("hi! Create-form is made?")
+    // alert("hi! Create-form is made?")
 
     if (Data.login != "",Data.password != "",Data.name != "",Data.role_id != ""){
 
-        // check = confirm("do you really wish to create a new user?");
+        check = confirm("do you really wish to create a new user?");
 
-        // if (check === true){
+        if (check === true){
 
             console.log("Userd said: ",check);
                 
@@ -142,12 +142,7 @@ Create.onclick = function(){
 
             console.log("User decided to not create a new user.")
         }
-
-    // } else {
-    //     alert("Не все поля заполнены")
-    // }
-
-
+    }
 }
 
 
@@ -158,14 +153,27 @@ Edit_User.onclick = function(){
     let Role_select = document.getElementById("New_Role_Id")
     let Role = Role_select.options[Role_select.selectedIndex].value
 
-    let Data = {login:document.getElementById("New_Login").value,
-    password:document.getElementById("New_Password").value,
-    name:document.getElementById("New_Name").value,
-    role_id:Role,
-    status:"active",
-    dark_theme:true,
-    max_sessions:1
-    };
+   
+    
+        let Data = {
+        login:document.getElementById("New_Login").value,
+        password:document.getElementById("New_Password").value,
+        name:document.getElementById("New_Name").value,
+        role_id:Role,
+        status:"active",
+        dark_theme:true,
+        max_sessions:1
+        };
+    // if(document.getElementById("New_Login").value == ''){
+    //     Data.login = get_for_edit("login")
+    // }
+    // if(document.getElementById("New_Password").value == ''){
+    //     Data.password = get_for_edit("password")
+    // }
+    // if(document.getElementById("New_Name").value == ''){
+    //     Data.password = get_for_edit("name")
+    // }
+    
 
     // нельзя использовать любое role_id, нужно использовать те роли которые уже существуют
     // xhr.setRequestHeader("Content-Type", "application/json") объявляет о том что данные которые мы отправляем будут в формате JSON
@@ -203,7 +211,7 @@ Edit_User.onclick = function(){
         a.style.display = "none";
         var b = document.getElementById("funks")
         b.style.display = "block"; 
-        // get_table()
+        get_table()
 
     } else {
         alert("Не все поля заполнены")
@@ -228,7 +236,7 @@ DELETE_User.onclick = function(){
             
         let xhr = new XMLHttpRequest();
 
-        let UserIdUrl = UsersURL + '/' +insert_id;
+        let UserIdUrl = UsersURL + '/' + insert_id;
 
         xhr.open("DELETE",UserIdUrl);
 
@@ -280,7 +288,7 @@ async function get_out(output){
         <td>${table.role_id}</td>
         <td>${table.status}</td>`
     })
-    console.log(rowCount);
+    console.log(`всего у нас ${rowCount} строк`);
     
         
 }
@@ -342,7 +350,6 @@ function clear_table2(){
     sort_table_by_column(Table_info2);
 }
 
-let light_theme = true
 
 
 

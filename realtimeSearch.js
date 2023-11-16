@@ -53,9 +53,6 @@ function find_and_blend(color, column){
                     `;
             }
 
-
-
-
         }
         else{
             document.getElementById('output_table').getElementsByTagName("tr")[i].style.background = 'transparent';
@@ -101,10 +98,7 @@ input_for_search3.onkeyup = function(){
 function get_all(){
     let output_table2 = document.getElementById("search_out");
     clear_table2()
-
-    let searching = document.getElementById(`search_input${0}`).value;
-    // console.log(searching)
-
+    
     var correct = 0;
         var as = document.getElementById('output_table');
 
